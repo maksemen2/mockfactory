@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/maksemen2/mockfactory/internal/config"
 	"github.com/maksemen2/mockfactory/internal/parser"
@@ -40,6 +41,11 @@ func (w *JsonWriter) Write() error {
 
 	for structName, fields := range w.structs {
 		if w.config.Output.OutputStrategy == config.FilePerStruct {
+			fileName := w.GetFileName(structName)
+			if !strings.HasSuffix(fileName, ".json") {
+				fileName += ".json"
+			}
+			w.logger.Debug("Creating output file for struct", "fileName", fileName)
 			file, err = os.Create(filepath.Join(w.config.Output.Path, w.GetFileName(structName)+".json"))
 			if err != nil {
 				w.logger.Error("Failed to create output file for struct", "structName", structName, "error", err)

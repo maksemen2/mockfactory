@@ -2,6 +2,22 @@
 
 **Mockfactory is a simple CLI util to generate mock and test data from your Golang structs.** 
 
+# Installation
+
+***Via go install:***
+
+```bash
+go install github.com/maksemen2/mockfactory/cmd/mockfactory@latest
+```
+
+***Building from source:***
+
+```bash
+git clone https://github.com/maksemen2/mockfactory.git
+cd mockfactory
+make
+```
+
 # Features
 
 - **Realistic random data generation** for your structs fields

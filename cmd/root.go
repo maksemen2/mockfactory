@@ -15,6 +15,7 @@ var rootCmd = &cobra.Command{
 	Short: "Generate mock data from Go structs",
 	Run: func(cmd *cobra.Command, args []string) {
 		cfg, logger, _ := ExtractConfig(cmd)
+		logger.Debug("Initializing process", "config", cfg)
 		pkg.GenerateFromFile(cfg, logger)
 	},
 }

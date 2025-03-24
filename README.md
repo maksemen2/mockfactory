@@ -48,7 +48,7 @@ import "time"
 type User struct {
 	ID        int       `mock:"min=1000;max=9999"`
 	Name      string    `mock:"prefix=user"`
-	CreatedAt time.Time `mock:"past"`
+	CreatedAt time.Time `mock:"range=past"`
 	Balance   float32
 }
 ```
